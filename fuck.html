@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>JSFUCK FRAMEWORK</title>
+    </head>
+    <body>
+        <div class="?component(homePage)" component="homePage">
+            <div class="?include(headerComponent)">
+            </div>
+            <div>
+                <div class="?if(user.connected)" if="user.connected">
+                    <p>User connected</p>
+                </div>
+                <div>
+                    <h1 class="?content(user.userName)" content="user.userName"></h1>
+                    <h2 class="?content(user.userId)" content="user.userId"></h2>
+                    <p class="?if(user.isUserPremium)" if="user.isUserPremium"><b>Premium user</b></p>
+                </div>
+                <div>
+                    <p>Your birthday: </p>
+                    <p class="?content(user.birthdayDate)"></p>
+                </div>
+                <div class="?list(users)">
+                    <div>
+                        <p class="?content(name)">User 1</p>
+                        <button class="?action(onclick, deleteUser)">Delete user</button>
+                    </div>
+                </div>
+                <input type="text" class="?action(onchange, setUsername)" />
+                <button>Ajouter l'utilisateur</button>
+
+                <script src="fuckjs/Component.js"></script>
+            </div>
+        </div>
+    </body>
+</html>
