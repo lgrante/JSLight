@@ -13,9 +13,16 @@ That's at that point that *JSLight* come into play! *JSLight* allows you to writ
 *Component* class is the basic class that you'll use everywhere in your app. To build a component you only need two files:
 - *HTML* template: A pure html file, the language is HTML but some attributes has been had. These attributes works with every HTML tag:
 	- **content**: The value of this attribute is a reference to an variable from the component state (see below to get more details about state). The content of this tag have the value of the state.
-	- **if**: For value it's the same as content. It means that this tag is conditionnal. If the value is true it appears otherwise it's doesn't appear (same for all its childs).
-	- **list**:
-	- **item**:
-	- **action**:
+	
+	- **if**: For the value it's the same as content. if means that this tag is conditionnal. If the value is true it appears otherwise it's doesn't appear (same for all its childs).
+	
+	- **list**: For the value it's the same as content except that the state must be an array. This tag is used for tag that contains a list of identic childs.
+	
+	- **item**: The value is the value of the current element of the array passed to the list attribute.
+	
+	- **action**: Two parameters: 
+		- A reference to a function from the actions 	array of your component (see below for more details).
+		- The name of the event that fires the functions passed as first parameter.
+		
 - *JS* file: In this file you write a class that inherits from *Component* class that will define your component behaviour.
 
