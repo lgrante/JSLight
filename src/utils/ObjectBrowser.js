@@ -1,4 +1,4 @@
-export default function ObjectBrowser(object, path) {
+module.exports = function ObjectBrowser(object, path) {
     let objectRef = object
     const fields = path.split('.'), fieldsNumber = fields.length, lastField = fields[fieldsNumber - 1]
     const regexBracketsArray = /\[[0-9]+\]?/, regexBracketsObject = /\[[a-zA-Z0-9_]+\]?/, regexField = /^[a-zA-Z0-9_]+/

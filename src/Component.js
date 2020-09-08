@@ -1,6 +1,6 @@
-import ObjectBrowser from './utils/ObjectBrowser'
-import Syntax from './LightSyntax'
-import { LightElement, elementType } from './LightElement'
+const ObjectBrowser = require('./utils/ObjectBrowser')
+const Syntax = require('./LightSyntax')
+const { LightElement, elementType } = require('./LightElement')
 
 function Component()
 {

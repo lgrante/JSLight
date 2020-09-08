@@ -1,4 +1,4 @@
-const Syntax = {
+module.exports = {
     keyWords: {
         COMPONENT: "component",
         INCLUDE: "include",
@@ -14,7 +14,5 @@ const Syntax = {
         chain: ":"
     },
 
-    getParameters: attributeValue => attributeValue.search(/([a-z]+\, )+[a-z]+/).split(', '),
+    getParameters: attributeValue => attributeValue.match(/([a-zA-Z0-9]+\, )+[a-zA-Z0-9]+/)[0].split(', ')
 }
-
-export default Syntax

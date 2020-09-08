@@ -1,32 +1,32 @@
-import Syntax from './LightSyntax'
-import ObjectBrowser from './utils/ObjectBrowser'
+const Syntax = require('./LightSyntax')
+const ObjectBrowser = require('./utils/ObjectBrowser')
+const { LightElement } = require('./LightElement')
 
-export default function LightElementEditor(element) {
-    this.domTree = () => Object.values(document.all)
+function LightElementEditor(element, document) {
+    this.domTree = document.body
     this.element = element
 }
 
-LightElementEditor.prototype.setDisplay = state => {
+LightElementEditor.prototype.setDisplay = function(state) {
     const { node, parent, next, prev } = this.element
 
-    if (state && !this.domTree().includes(node)) {
-        if (parent.childElementCount === 1) {
+    if (state && !this.domTree.contains(node)) {
+        if (parent.childElementCount === 0)
             parent.appendChild(node)
-        } else if (next !== null) {
+        else if (next !== null)
             parent.insertBefore(node, next)
-        } else if (prev !== null) {
-            parent.insertAfter(node, prev)
-        }
-    } else if (!state && this.domTree().includes(node))
+        else if (prev !== null)
+            prev.after(node)
+    } else if (!state && this.domTree.contains(node))
         parent.removeChild(node)
 }
 
-LightElementEditor.prototype.setContent = content => {
-    if (content !== this.node.innerHTML)
-        this.node.innerHTML = content
+LightElementEditor.prototype.setContent = function(content) {
+    if (content !== this.element.node.innerHTML)
+        this.element.node.innerHTML = content
 }
 
-LightElementEditor.prototype.setChildList = content => {
+LightElementEditor.prototype.setChildList = function(content) {
     const { child, node } = this.element
     const items = Object.values(child)
     const modelItem = items[0]
@@ -48,3 +48,5 @@ LightElementEditor.prototype.setChildList = content => {
     for (let i = content.length; i < items.length; i++)
         node.removeChild(items[i])
 }
+
+module.exports = LightElementEditor
